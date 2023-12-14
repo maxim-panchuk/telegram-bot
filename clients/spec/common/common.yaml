@@ -1,0 +1,44 @@
+openapi: "3.0.2"
+
+info:
+  title: API Title
+  version: "1.0"
+
+servers:
+  - url: https://api.server.test/v1
+
+paths: { }
+
+components:
+  schemas:
+    Currency:
+      description: |
+        Currency identifier in accordance with the ISO 4217 standard
+      type: string
+      enum:
+        - RUB
+        - USD
+        - EUR
+
+    MoneyAmount:
+      description: |
+        Text presentation of money amount. For non-integers, a dot is used as a separator
+      type: string
+      example: '100.05'
+
+    Money:
+      description: Common structure for money presentation for prices
+      type: object
+      properties:
+        amount:
+          '$ref': './common.yaml#/components/schemas/MoneyAmount'
+        currency:
+          '$ref': './common.yaml#/components/schemas/Currency'
+      required:
+        - amount
+        - currency
+
+    SupplierId:
+      description: System supplier unique identifier
+      type: integer
+      format: int64

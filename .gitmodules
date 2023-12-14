@@ -1,0 +1,4 @@
+[submodule "userver"]
+	path = services/backend-cpp/cpp-reseller-backend/third_party/userver
+	url = https://github.com/userver-framework/userver.git
+

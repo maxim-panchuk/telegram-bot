@@ -1,0 +1,105 @@
+openapi: "3.0.2"
+info:
+  title: API Title
+  version: "1.0"
+servers:
+  - url: http://localhost:8081
+    description: local
+paths:
+  # Iphones
+  /v1/iphones/bot-user/update:
+    post:
+      description: |
+        Request to update iphones for bot-user
+      tags:
+        - Iphones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref': 'definitions.yaml#/components/schemas/IphonesUpdateRequest'
+      responses:
+        '200':
+          description: |
+            Request processed successfully, iphones for bot-user updated
+
+  /v1/iphones/find/best:
+    get:
+      description: |
+        Request to get iphones with best prices for the specific model
+      tags:
+        - Iphones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref': './definitions.yaml#/components/schemas/IphonesFindBestRequest'
+      responses:
+        '200':
+          description: |
+            Request processed successfully, body contains iphones
+          content:
+            application/json:
+              schema:
+                '$ref': './definitions.yaml#/components/schemas/IphonesResponse'
+
+  # AirPods
+  /v1/airpods/bot-user/update:
+    post:
+      description: |
+        Request to update airpods for bot-user
+      tags:
+        - AirPods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref': 'definitions.yaml#/components/schemas/AirPodsUpdateRequest'
+      responses:
+        '200':
+          description: |
+            Request processed successfully, airpods for bot-user updated
+
+  /v1/airpods/find/best:
+    get:
+      description: |
+        Request to get airpods with best prices for the specific model
+      tags:
+        - AirPods
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              '$ref': './definitions.yaml#/components/schemas/AirPodsFindBestRequest'
+      responses:
+        '200':
+          description: |
+            Request processed successfully, body contains airpods
+          content:
+            application/json:
+              schema:
+                '$ref': './definitions.yaml#/components/schemas/AirPodsResponse'
+
+  /v1/airpods/get/all:
+    post:
+      description: |
+        Request to get all supplier airpods
+      tags:
+        - AirPods
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema: { }
+      responses:
+        '200':
+          description: |
+            Request processed successfully, body contains airpods
+          content:
+            application/json:
+              schema:
+                '$ref': './definitions.yaml#/components/schemas/AirPodsResponse'

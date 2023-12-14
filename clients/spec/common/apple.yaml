@@ -1,0 +1,120 @@
+openapi: "3.0.2"
+
+info:
+  title: API Title
+  version: "1.0"
+
+servers:
+  - url: https://api.server.test/v1
+
+paths: { }
+
+components:
+  schemas:
+    # Iphone
+    Iphone:
+      type: object
+      properties:
+        bot_user_id:
+          description: Identifier of bot user
+          type: string
+        iphone_id:
+          type: string
+        country:
+          '$ref': './iphone.yaml#/components/schemas/Country'
+        price_amount:
+          '$ref': './common.yaml#/components/schemas/MoneyAmount'
+        price_currency:
+          '$ref': './common.yaml#/components/schemas/Currency'
+        modified_at:
+          type: string
+          format: date-time
+      required:
+        - bot_user_id
+        - iphone_id
+        - country
+        - price_amount
+        - price_currency
+
+    IphoneModel:
+      type: string
+      enum:
+        - IPHONE_14_PRO_MAX
+        - IPHONE_14_PRO
+        - IPHONE_14_PLUS
+        - IPHONE_14
+        - IPHONE_SE_3
+        - IPHONE_13_PRO_MAX
+        - IPHONE_13_PRO
+        - IPHONE_13
+        - IPHONE_13_MINI
+        - IPHONE_12_PRO_MAX
+        - IPHONE_12_PRO
+        - IPHONE_12
+        - IPHONE_12_MINI
+        - IPHONE_SE_2
+        - IPHONE_11_PRO_MAX
+        - IPHONE_11_PRO
+        - IPHONE_11
+        - IPHONE_XS
+        - IPHONE_XS_MAX
+        - IPHONE_XR
+        - IPHONE_X
+
+    IphoneMemory:
+      type: string
+      enum:
+        - GB_32
+        - GB_64
+        - GB_128
+        - GB_256
+        - GB_512
+        - TB_1
+
+    # Common
+    AppleColor:
+      type: string
+      enum:
+        - SPACE_GRAY
+        - GRAY
+        - SPACE_BLACK
+        - BLACK
+        - MIDNIGHT_GREEN
+        - ALPINE_GREEN
+        - GREEN
+        - DEEP_PURPLE
+        - PURPLE
+        - PACIFIC_BLUE
+        - SIERRA_BLUE
+        - BLUE
+        - RED
+        - MIDNIGHT
+        - STARLIGHT
+        - GRAPHITE
+        - SILVER
+        - GOLD
+        - YELLOW
+        - WHITE
+        - CORAL
+        - PINK
+
+    Country:
+      type: string
+      enum:
+        - HONG_KONG
+        - JAPAN
+        - USA
+        - SOUTH_KOREA
+        - EUROPE
+        - SINGAPORE
+        - INDIA
+        - CHINA
+        - UAE
+        - RUSSIA
+        - AUSTRALIA
+        - KAZAKHSTAN
+        - CANADA
+        - VIETNAM
+        - UNITED_KINGDOM
+        - THAILAND
+        - MEXICO

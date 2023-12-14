@@ -1,0 +1,133 @@
+openapi: "3.0.2"
+info:
+  title: API Title
+  version: "1.0"
+servers:
+  - url: http://localhost:8081
+paths: {}
+
+components:
+  schemas:
+    # Iphones
+    IphoneDto:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+        money:
+          '$ref': '../../common/common.yaml#/components/schemas/Money'
+      required:
+        - id
+        - country
+        - money
+
+    IphonesUpdateRequest:
+      type: object
+      properties:
+        supplier_id:
+          $ref: '../../common/common.yaml#/components/schemas/SupplierId'
+        iphones:
+          type: array
+          items:
+            '$ref': './definitions.yaml#/components/schemas/IphoneDto'
+      required:
+        - supplier_id
+        - iphones
+
+    IphonesFindBestRequest:
+      type: object
+      properties:
+        model:
+          '$ref': '../../common/apple.yaml#/components/schemas/IphoneModel'
+        memory:
+          '$ref': '../../common/apple.yaml#/components/schemas/IphoneMemory'
+        color:
+          '$ref': '../../common/apple.yaml#/components/schemas/AppleColor'
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+
+    IphonesResponse:
+      type: array
+      items:
+        '$ref': './definitions.yaml#/components/schemas/SupplierIphone'
+
+    SupplierIphone:
+      type: object
+      properties:
+        id:
+          type: string
+        supplier_id:
+          $ref: '../../common/common.yaml#/components/schemas/SupplierId'
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+        money:
+          '$ref': '../../common/common.yaml#/components/schemas/Money'
+      required:
+        - id
+        - supplier_id
+        - country
+        - money
+    
+    # AirPods
+    AirPodsDto:
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+        money:
+          '$ref': '../../common/common.yaml#/components/schemas/Money'
+      required:
+        - id
+        - country
+        - money
+
+    AirPodsUpdateRequest:
+      type: object
+      properties:
+        supplier_id:
+          $ref: '../../common/common.yaml#/components/schemas/SupplierId'
+        airpods:
+          type: array
+          items:
+            '$ref': './definitions.yaml#/components/schemas/AirPodsDto'
+      required:
+        - supplier_id
+        - airpods
+
+    AirPodsFindBestRequest:
+      type: object
+      properties:
+        model:
+          '$ref': '../../common/apple.yaml#/components/schemas/IphoneModel'
+        memory:
+          '$ref': '../../common/apple.yaml#/components/schemas/IphoneMemory'
+        color:
+          '$ref': '../../common/apple.yaml#/components/schemas/AppleColor'
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+
+    AirPodsResponse:
+      type: array
+      items:
+        '$ref': './definitions.yaml#/components/schemas/SupplierAirPods'
+
+    SupplierAirPods:
+      type: object
+      properties:
+        id:
+          type: string
+        supplier_id:
+          $ref: '../../common/common.yaml#/components/schemas/SupplierId'
+        country:
+          '$ref': '../../common/apple.yaml#/components/schemas/Country'
+        money:
+          '$ref': '../../common/common.yaml#/components/schemas/Money'
+      required:
+        - id
+        - supplier_id
+        - country
+        - money
